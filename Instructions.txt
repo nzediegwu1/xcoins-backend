@@ -1,0 +1,8 @@
+The scope of this task is to evaluate a simple API and identify improvements to the overall code quality.
+
+The required steps are:
+
+1. Review the code provided in the code-review.zip file
+2. Make changes in the code to make it in your opinion "production ready"
+3. Add in the README.md file an exhaustive explanation of your thought process
+4. Send the new code back to us as a zip file
