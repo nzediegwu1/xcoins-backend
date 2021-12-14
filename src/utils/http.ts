@@ -1,8 +1,18 @@
 import { ResponseProps } from './types';
 import { Response, Request } from 'express';
-import app from '../api';
 
-export const response = ({
+/**
+ * @description Custom response helper function
+ * @param {ResponseProps} {
+ *   res,
+ *   code = 200,
+ *   message,
+ *   data,
+ *   errors,
+ * }
+ * @returns {Object} HTTP response json in custom format
+ */
+const response = ({
   res,
   code = 200,
   message,

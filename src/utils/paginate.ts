@@ -1,5 +1,16 @@
 import { Paginated, PaginatedArgs } from './types';
 
+/**
+ * @description Retrieves paginated data from a collection
+ * @param {PaginatedArgs} {
+ *   page,
+ *   limit,
+ *   model,
+ *   message,
+ *   query = {},
+ * }
+ * @returns {Paginated}
+ */
 export async function findPaginated({
   page,
   limit,

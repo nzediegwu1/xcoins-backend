@@ -11,37 +11,30 @@ import { DBURL } from '../config';
   });
 
   const profile = new Profile({
-    name: `String`,
-    email: `String`,
-    capital: `123`,
+    name: 'Anaeze Nsoffor',
+    email: 'nzediegwu1@gmail.com',
+    capital: `123000`,
     divisa: `String`,
-    prefered_cryptocurrency: `String`,
+    prefered_cryptocurrency: 'USDT',
   });
   await profile.save();
 
-  const query = { _id: '6093abb3dfd9da1deeae56f2' };
-  const idProfile = await Profile.findOne(query).then((e) => {
-    return e?._id;
-  });
-
   const simulator = new Simulator({
-    profile_id: idProfile,
-    name: `String`,
-    start_date: `01/05/2021`,
-    check_date: `01/05/2021`,
-    cryptocurrency: `String`,
-    divisa: `String`,
-    Crypto_price_start: `123`,
-    Crypto_price_check: `123`,
+    profile_id: profile._id,
+    cryptocurrency: 'BTC',
+    dateRecorded: '01/05/2021',
+    euros: '400',
+    price: '7000',
+    quantity: 1000,
   });
   await simulator.save();
 
   const favorite = new Favorite({
-    profile_id: idProfile,
-    name: `String`,
-    favorite1: `String`,
-    favorite2: `String`,
-    favorite3: `String`,
+    profile_id: profile._id,
+    name: 'HODL coins',
+    favorite1: 'BTC',
+    favorite2: 'ETH',
+    favorite3: 'SOL',
   });
   await favorite.save();
 
