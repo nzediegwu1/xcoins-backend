@@ -1,4 +1,5 @@
 import { Response } from 'express';
+import { Model } from 'mongoose';
 
 export enum Message {
   SIMULATOR = 'simulator',
@@ -18,3 +19,16 @@ export type APIResponse = Promise<{
   message: string;
   data?: any;
 }>;
+
+export type Paginated = Promise<{
+  message: string;
+  data: { total: number; data: any[] };
+}>;
+
+export interface PaginatedArgs {
+  page: number;
+  limit: number;
+  model: Model<any>;
+  query?: any;
+  message: string;
+}

@@ -1,12 +1,13 @@
 import mongoose from 'mongoose';
+import { stringSchema } from '../utils/constants';
 
 const { Schema } = mongoose;
 
 const schema = new Schema(
   {
-    profile_id: { type: Schema.Types.ObjectId, ref: 'Profile', required: true }, // index
+    profile_id: { type: Schema.Types.ObjectId, ref: 'Profile', required: true },
     dateRecorded: Date,
-    cryptocurrency: String,
+    cryptocurrency: stringSchema,
     euros: Number,
     price: Number,
     quantity: Number,
@@ -16,4 +17,5 @@ const schema = new Schema(
   }
 );
 
+schema.index({ profile_id: -1 });
 export default mongoose.model('Simulator', schema);

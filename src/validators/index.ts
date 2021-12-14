@@ -22,4 +22,6 @@ export const handleValidation = async (
     : result;
 };
 
+export { validateProfile } from './profile.validator';
+export { validateSimulator } from './simulator.validator';
 export { default as validateId } from './id.validator';
