@@ -6,7 +6,7 @@ import simulatorApi from './simulator.router';
 const app = express.Router();
 
 app.use('/favorite', favoriteApi);
-app.use('/simulator', profileApi);
-app.use('/profile', simulatorApi);
+app.use('/simulator', simulatorApi);
+app.use('/profile', profileApi);
 
 export default app;

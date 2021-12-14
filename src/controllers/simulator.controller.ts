@@ -1,17 +1,25 @@
+import Mongoose from 'mongoose';
 import { Request } from 'express';
 import { success } from '../messages';
 import { Simulator } from '../models';
 import { ErrorHandler } from '../utils/http';
+import { findPaginated } from '../utils/paginate';
 import { APIResponse, Message } from '../utils/types';
 
 const message = success(Message.SIMULATOR);
+const { ObjectId } = Mongoose.Types;
 
 export default class SimulatorController {
   @ErrorHandler
   static async getAll(req: Request): APIResponse {
-    const simulator = await Simulator.find({});
+    const { page = 1, limit = 20 } = req.query;
 
-    return { message: message.fetched, data: simulator };
+    return findPaginated({
+      page: +page,
+      limit: +limit,
+      model: Simulator,
+      message: message.fetched,
+    });
   }
 
   @ErrorHandler
@@ -25,9 +33,17 @@ export default class SimulatorController {
 
   @ErrorHandler
   static async getByProfile(req: Request): APIResponse {
-    const { profile_id } = req.params;
-    const data = await Simulator.find({ profile_id });
+    const {
+      params: { profile_id },
+      query: { page = 1, limit = 20 },
+    } = req;
 
-    return { message: message.retrieved, data };
+    return findPaginated({
+      page: +page,
+      limit: +limit,
+      model: Simulator,
+      query: { profile_id: ObjectId(profile_id) },
+      message: message.retrieved,
+    });
   }
 }

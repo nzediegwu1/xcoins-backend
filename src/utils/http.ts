@@ -18,20 +18,6 @@ export class CustomError extends Error {
 }
 
 /**
- * @description Checks if a value exists, or throw 404 error
- *
- * @param {any} data Item to check if is truthy
- * @param {String} message Error message to return upon failure
- *
- * @throws {CustomError}
- */
-export const existsOr404 = (data: any, message: string) => {
-  if (!data) {
-    throw new CustomError(message, 404);
-  }
-};
-
-/**
  * @description HTTP error resolver for controller actions
  *
  * @param {Object} target Details about the decorated member
