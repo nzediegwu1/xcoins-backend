@@ -1,5 +1,6 @@
 import { ResponseProps } from './types';
 import { Response, Request } from 'express';
+import app from '../api';
 
 export const response = ({
   res,
@@ -37,6 +38,7 @@ export function ErrorHandler(
       const result = await action.call(this, req, res);
       return response({ res, ...result });
     } catch ({ message, statusCode = 500 }) {
+      console.error('Error: ', message, '\ncode: ', statusCode);
       return response({
         res,
         code: statusCode as number,
